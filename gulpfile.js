@@ -31,8 +31,8 @@ gulp.task('webserver', ['sass:build', 'js:build', 'jade:build'], function() {
         server: {
             baseDir: "app/"
         },
-        notify: true
-        // port: 8000
+        notify: true,
+        port: 3050
     }); 
 });
 
@@ -113,7 +113,7 @@ gulp.task('sprite:build', function() {
 // Images
 gulp.task('image:build', function () {
     gulp.src('src/img/**/*.*') 
-    .pipe(newer('assets/img/'))
+    .pipe(newer('app/img/'))
     .pipe(imagemin({
         optimizationLevel: 3,
         progressive: true,
@@ -125,6 +125,7 @@ gulp.task('image:build', function () {
     .pipe(notify({ message: 'Images task complete' }));
     // .pipe(reload({stream: true}));
 });
+
 // Fonts
 gulp.task('fonts:build', function() {
     gulp.src('src/fonts/**/*.*')
