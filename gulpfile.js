@@ -20,7 +20,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'), //конкатенация файлов
     notify = require('gulp-notify'),
     plumber = require('gulp-plumber'),
-    cache = require('gulp-cache'),
+    cached = require('gulp-cached'),
+    changed = require('gulp-changed'),
+    newer = require('gulp-newer'),
     del = require('del');
 
 gulp.task('webserver', ['sass:build', 'js:build', 'jade:build'], function() {
@@ -111,18 +113,18 @@ gulp.task('sprite:build', function() {
 // Images
 gulp.task('image:build', function () {
     gulp.src('src/img/**/*.*') 
-    .pipe(cache(imagemin({
+    .pipe(newer('assets/img/'))
+    .pipe(imagemin({
         optimizationLevel: 3,
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
         use: [pngquant()],
         interlaced: true
-    })))
-    .pipe(gulp.dest('app/img'))
+    }))
+    .pipe(gulp.dest('assets/img/'))
     .pipe(notify({ message: 'Images task complete' }));
     // .pipe(reload({stream: true}));
 });
-
 // Fonts
 gulp.task('fonts:build', function() {
     gulp.src('src/fonts/**/*.*')
