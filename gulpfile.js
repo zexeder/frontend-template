@@ -121,7 +121,7 @@ gulp.task('image:build', function () {
         use: [pngquant()],
         interlaced: true
     }))
-    .pipe(gulp.dest('assets/img/'))
+    .pipe(gulp.dest('app/img/'))
     .pipe(notify({ message: 'Images task complete' }));
     // .pipe(reload({stream: true}));
 });
