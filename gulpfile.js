@@ -4,7 +4,7 @@ require('es6-promise').polyfill();
 
 var gulp = require('gulp'),
     watch = require('gulp-watch'),
-    jade = require('gulp-pug'), //Jade
+    pug = require('gulp-pug'), //pug
     sass = require('gulp-sass'),
     prefixer = require('gulp-autoprefixer'),
     spritesmith  = require('gulp.spritesmith'),
@@ -25,7 +25,7 @@ var gulp = require('gulp'),
     newer = require('gulp-newer'),
     del = require('del');
 
-gulp.task('webserver', ['sass:build', 'js:build', 'jade:build'], function() {
+gulp.task('webserver', ['sass:build', 'js:build', 'pug:build'], function() {
     browserSync.init({
         // proxy: 'site.dev',
         server: {
@@ -36,11 +36,11 @@ gulp.task('webserver', ['sass:build', 'js:build', 'jade:build'], function() {
     }); 
 });
 
-// Jade
-gulp.task('jade:build', function () {
-    gulp.src('src/jade/*.jade')
-    .pipe(plumber({errorHandler: notify.onError("Jade error: <%= error.message %>")}))
-    .pipe(jade({
+// pug
+gulp.task('pug:build', function () {
+    gulp.src('src/pug/*.pug')
+    .pipe(plumber({errorHandler: notify.onError("pug error: <%= error.message %>")}))
+    .pipe(pug({
       pretty: true
     }))
     .pipe(gulp.dest('app/'));
@@ -160,7 +160,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', [
-    'jade:build',
+    'pug:build',
     'js:build',
     'sass:build',
     'fonts:build',
@@ -168,8 +168,8 @@ gulp.task('build', [
     ]);
 
 gulp.task('watch', function(){
-    watch(['src/jade/**/*.jade'], function(event, cb){
-        gulp.start('jade:build');
+    watch(['src/pug/**/*.pug'], function(event, cb){
+        gulp.start('pug:build');
     });
     watch(['src/sass/**/*.sass'], function(event, cb) {
         gulp.start('sass:build');
