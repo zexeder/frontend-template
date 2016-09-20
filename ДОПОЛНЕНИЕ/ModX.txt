@@ -1,30 +1,32 @@
 [[!FormIt?
-   &hooks=`recaptchav2,email,redirect`
-   &emailFrom=`noreply@komplex-strazh.ru`
-    &emailFromName=`Комплекс-Страж`
-    &emailSubject=`Сообщение с сайта [[++site_name]]`
-   &emailTpl=`emailTpl`
-   &emailTo=`[[++emailsender]]`
-   &redirectTo=`[[*id]]`
-   &redirectParams=`{"success": 1}`
-   &validate=`aname:required,
-      email:email:required,
-      tel:isNumber:required,
-      message:required:stripTags`
-    &successMessage=`*Сообщение отправлено!`
-    &placeholderPrefix=`af.`
-    &successMessagePlaceholder=`af.asideSuccessMessage`
-    &validationErrorMessage=`*Не удалось отправить сообщение.`
+	&hooks=`recaptchav2,email,redirect`
+	&emailFrom=`noreply@[[++site_name]]`
+	&emailFromName=`[[++site_name]]`
+	&emailSubject=`Сообщение с сайта [[++site_name]]`
+	&emailTpl=`emailTpl`
+	&emailTo=`[[++emailsender]]`
+	&redirectTo=`[[*id]]`
+	&redirectParams=`{"success": 1}`
+	&validate=`aname:required,
+		email:email:required,
+		tel:isNumber:required,
+		message:required:stripTags`
+	&successMessage=`*Сообщение отправлено!`
+	&placeholderPrefix=`fi.`
+	&successMessagePlaceholder=`fi.successMessage`
+	&validationErrorMessage=`*Не удалось отправить сообщение.`
 ]]
 
 <form action="[[~[[*id]]]]" class="aside-form" method="post" name="asideForm" id="asideForm">
-    <span class="success">[[!+fi.successMessage]]</span>
-    <span class="fail">[[!+fi.validation_error_message]]</span>
-  ---------------------------------------------------
-  <div style="width:100px">[[!recaptchav2_render]]
-  [[!+af.error.recaptchav2_error]]</div>
-  ---------------------------------------------------
+		<span class="success">[[!+fi.successMessage]]</span>
+		<span class="fail">[[!+fi.validation_error_message]]</span>
+	---------------------------------------------------
+	<div style="width:100px">[[!recaptchav2_render]]
+	[[!+fi.error.recaptchav2_error]]</div>fo
+	---------------------------------------------------
 </form>
+
+		<input type="text" name="name" placeholder="Имя*" value="[[!+fi.name]]">
 
 emailTpl
 <p>Это сообщение было отправлено посетителем по имени [[+name]] с помощью формы обратной связи. </p>

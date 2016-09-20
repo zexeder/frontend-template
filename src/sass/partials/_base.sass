@@ -1,6 +1,9 @@
-a:link, a:visited
+*
+	box-sizing: border-box
+a
 	text-decoration: none
 	color: $link-c
+	transition: .350s
 
 //img
 	vertical-align: top
@@ -69,6 +72,16 @@ hr
 		bottom: 0
 		width: 100%
 		color: #fff
+
+// Zoom image
+.image-zoom
+	overflow:hidden
+	// width: 380px
+	// height:250px
+	img
+		transition: all 1s ease-out
+		&:hover
+			transform: scale(1.1)
 
 // Обрезка текста
 .cut-wrap
