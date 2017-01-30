@@ -1,0 +1,23 @@
+		<div class="contact-map">
+			<script type="text/javascript" src="http://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+			<script type="text/javascript">// <![CDATA[
+				ymaps.ready(init);
+
+				function init () {
+					var myMap = new ymaps.Map("yamap", {
+							center: [56.35952483, 43.83242726],
+							zoom: 16,
+							controls: []
+						})
+
+					myMap.geoObjects
+						.add(new ymaps.Placemark([56.35952483, 43.83242726],  {
+							preset: 'islands#dotIcon',
+							iconColor: '#0095b6'
+						}));
+						
+					myMap.behaviors.disable('scrollZoom');
+				}
+			// ]]></script>
+			<div id="yamap"> </div>
+		</div>

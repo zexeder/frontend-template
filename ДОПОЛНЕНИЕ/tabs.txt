@@ -1,0 +1,42 @@
+<div class="tabs-css">
+	<input id="tab1" type="radio" name="odin" checked="checked">
+	<input id="tab2" type="radio" name="odin">
+	<div class="tabs-css-panel">
+		<div class="container">
+			<label for="tab1">CSS</label>
+			<label for="tab2">HTML</label>
+		</div>
+	</div>
+	<div class="tabs-css-content">
+		<div class="tab">Первая</div>
+		<div class="tab">Вторая</div>
+	</div>
+</div>
+
+.tabs-css .tab, .tabs-css input {
+  display: none;
+}
+.tabs-css label {
+	padding: 5px;
+	margin: 0;
+	line-height: 46px;
+	cursor: pointer;
+
+	color: #fff;
+	width: 190px;
+	text-align: center;
+}
+.tabs-css input:nth-child(1):checked ~ .tabs-css-panel label:nth-child(1), .tabs-css input:nth-child(2):checked ~ .tabs-css-panel label:nth-child(2){
+  color: #307baa;
+	background-color: #cedbe3;
+}
+.tabs-css > input:nth-child(1):checked ~ .tabs-css-content .tab:nth-child(1),
+.tabs-css > input:nth-child(2):checked ~ .tabs-css-content .tab:nth-child(2) {
+  display: block;
+  padding: 5px;
+  border: 1px solid #aaa;
+}
+.tabs-css-panel {
+	background-color: #307baa;
+	padding: 15px 0;
+}

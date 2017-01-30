@@ -42,19 +42,22 @@ E-mail: [[+email]] <br />
 
 [
 {"caption":"Info", "fields": [
+{"field":"image","caption":"Изображение","inputTVtype":"image"},
 {"field":"link","caption":"Link","inputTVtype":"title"},
-{"field":"description","caption":"Description","inputTVtype":"richtext"},
-{"field":"image","caption":"Image","inputTVtype":"image"}
+{"field":"description","caption":"Description","inputTVtype":"richtext"}
 ]}
 ] 
 
 
 [
-{"header": "Image", "width": "300", "sortable": "false", "dataIndex": "image","renderer": "this.renderImage"},
-{"header": "Title", "width": "300", "sortable": "true", "dataIndex": "description"},
+{"header": "Изображение", "width": "300", "sortable": "false", "dataIndex": "image","renderer": "this.renderImage"},
 {"header": "Link", "width": "300", "sortable": "true", "dataIndex": "link"}
+{"header": "Title", "width": "300", "sortable": "true", "dataIndex": "description"},
 ]
 
 [[!getImageList? &tpl=`@CODE:  <div class="col-2_sm-3"><img src="[[+image]]"></div>` &tvname=`blackBlockImg`]]
 
 [[pdoField? &id=`1` &field=`d1`]]
+[[pdoField? &id=`21` &field=`phone` &toPlaceholder=`tel`]]
+
+[[!phpthumbof? &input=`[[+imageTV]]` &options=`&w=600&fltr[]=wmi|/images/watermark.png|C|50|0|0`]]

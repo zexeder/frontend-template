@@ -33,7 +33,7 @@ gulp.task('webserver', ['sass:build', 'js:build', 'pug:build'], function() {
         },
         notify: true,
         port: 3050
-    }); 
+    });
 });
 
 // pug
@@ -76,14 +76,14 @@ gulp.task('js:build', function () {
     // .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
     // .pipe(sourcemaps.init())
-    // .pipe(sourcemaps.write())  
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest('app/js'))
     // .on('error', gutil.log)
-    // .pipe(rigger()) 
+    // .pipe(rigger())
     .pipe(rename({ suffix: '.min' }))
-    // .pipe(sourcemaps.init()) 
-    .pipe(uglify()) 
-    // .pipe(sourcemaps.write()) 
+    // .pipe(sourcemaps.init())
+    .pipe(uglify())
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest('app/js'))
     // .on('error', gutil.log)
     .pipe(notify({ message: 'Scripts task complete' }));
@@ -112,7 +112,7 @@ gulp.task('sprite:build', function() {
 
 // Images
 gulp.task('image:build', function () {
-    gulp.src('src/img/**/*.*') 
+    gulp.src('src/img/**/*.*')
     .pipe(newer('app/img/'))
     .pipe(imagemin({
         optimizationLevel: 3,
